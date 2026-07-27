@@ -1,0 +1,36 @@
+# ============================================================
+# CTC Benchmark Dependencies
+# ============================================================
+#
+# Causal Permeability Principle
+# Computational validation framework
+#
+# ============================================================
+
+
+# Configuration files
+pyyaml>=6.0
+
+
+# Numerical computation
+numpy>=1.26
+
+
+# Data handling
+pandas>=2.0
+
+
+# Visualization
+matplotlib>=3.8
+
+
+# Statistical analysis
+scipy>=1.11
+
+
+# Testing
+pytest>=8.0
+
+
+# Progress tracking
+tqdm>=4.66
