@@ -1,0 +1,232 @@
+# ============================================================
+# CTC Benchmark Configuration
+# ============================================================
+#
+# Defines the default experimental conditions for testing:
+#
+#     Ω_t → Δ𝒢_(t+1)
+#
+# Core comparison:
+#
+# Closed:
+#     C_rev,t+1 = f(C_rev,t)
+#
+# Permeable:
+#     C_rev,t+1 = f(C_rev,t, E*)
+#
+# ============================================================
+
+
+experiment:
+
+  name: "ctc_default_benchmark"
+
+  description: >
+    Tests whether environmental access to revision mechanisms
+    increases reachable adaptive mechanism expansion.
+
+
+# ============================================================
+# Experiment Scale
+# ============================================================
+
+simulation:
+
+  trials: 100
+
+  steps_per_trial: 500
+
+  random_seed: 42
+
+
+
+# ============================================================
+# Environment Parameters
+# ============================================================
+
+environment:
+
+  # Amount of external novelty introduced
+  novelty_rate: 0.1
+
+
+  # Strength of environmental constraints
+  constraint_strength: 0.5
+
+
+  # Difficulty progression
+  difficulty_levels:
+
+    - 1
+    - 5
+    - 10
+    - 25
+    - 50
+
+
+  # Whether environments can change over time
+  dynamic_environment: true
+
+
+
+# ============================================================
+# Agent Parameters
+# ============================================================
+
+agents:
+
+
+  closed:
+
+    name: "closed_trajectory"
+
+
+    # Revision mechanism receives only internal state
+    permeability: 0.0
+
+
+    learning_rate: 0.1
+
+
+    exploration_rate: 0.2
+
+
+
+  permeable:
+
+    name: "permeable_lineage"
+
+
+    # Environmental access to C_rev
+    permeability: 1.0
+
+
+    learning_rate: 0.1
+
+
+    exploration_rate: 0.2
+
+
+
+# ============================================================
+# CTC Variables
+# ============================================================
+
+ctc:
+
+
+  # Ω:
+  # Environmental constraint information
+  constraint_information:
+
+
+    enabled: true
+
+
+    measurement:
+
+      method: "environment_difference"
+
+
+
+  # C_rev:
+  # Mechanism controlling future adaptation
+
+  revision_mechanism:
+
+
+    enabled: true
+
+
+    update_rule:
+
+      closed:
+
+        equation: >
+          C_rev(t+1)=f(C_rev(t))
+
+
+      permeable:
+
+        equation: >
+          C_rev(t+1)=f(C_rev(t),E*(t))
+
+
+
+  # Reachability measurement
+
+  mechanism_space:
+
+
+    track_reachable_mechanisms: true
+
+
+    metric:
+
+      name: "delta_generator_space"
+
+      equation: >
+        Δ𝒢 = 𝒢(t+1)-𝒢(t)
+
+
+
+# ============================================================
+# Metrics
+# ============================================================
+
+metrics:
+
+
+  capability:
+
+    enabled: true
+
+
+  adaptation:
+
+    enabled: true
+
+
+  permeability_score:
+
+    enabled: true
+
+
+  future_access:
+
+    enabled: true
+
+
+  residual_capability:
+
+    enabled: true
+
+
+  dependency_penalty:
+
+    enabled: true
+
+
+
+# ============================================================
+# Output
+# ============================================================
+
+output:
+
+
+  directory:
+
+    results/ctc_default
+
+
+  save_history: true
+
+
+  save_environment_states: true
+
+
+  save_agent_states: true
+
+
+  generate_plots: true
