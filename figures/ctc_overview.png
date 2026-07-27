@@ -1,0 +1,56 @@
+                 CAUSAL TRANSITION CONDITION
+
+
+        FIXED ADAPTATION                    RECURSIVE ADAPTATION
+
+
+              Reality                              Reality
+                 │                                    │
+                 ▼                                    ▼
+
+              Input                             Constraint
+                 │                                    │
+                 ▼                                    ▼
+
+        ┌────────────────┐                 ┌────────────────┐
+        │    System      │                 │    System      │
+        │                │                 │                │
+        │  updates state │                 │ updates itself │
+        └────────────────┘                 └────────────────┘
+                 │                                    │
+                 ▼                                    ▼
+
+              Better                          New adaptive
+            performance                       mechanisms
+
+
+                 ✗                                    ✓
+
+
+        Adaptation inside                Adaptation changes
+        fixed possibility space          possibility space itself
+
+
+                         CTC
+
+                         Ωₜ
+                          │
+                          ▼
+                    Δ𝒢ₜ₊₁
+
+              "the mechanism of adaptation changes"
+
+
+## CTC transition
+
+The difference between ordinary adaptation and recursive adaptation is not whether a system changes.
+
+Both systems change.
+
+The difference is whether information from reality can change the mechanism that generates future changes.
+
+\[
+\Omega_t \rightarrow \Delta\mathcal{G}_{t+1}
+\]
+
+CTC marks this transition.
